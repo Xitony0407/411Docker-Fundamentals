@@ -6,11 +6,11 @@ const app = express();
 const port = 3000;
 
 app.get('/', (req, res) => {
-  res.send('Hola a todos');
+  res.send('Hola precioso guapo chulo');
 });
 
 app.get('hello', (req, res) => {
-  res.send('Hola');
+  res.send('TE AMOOO');
 });
 
 app.listen(port, () => {
