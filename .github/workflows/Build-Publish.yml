@@ -16,7 +16,12 @@ jobs:
               run: docker login -u "${{ secrets.DOCKER_USER }}" -p "${{ secrets.DOCKER_PASSWORD }}"
 
             - name: Construir imagen
-              run: docker build -t xitony0407/docker-fundamentals:v2 .
+              run: docker build -t xitony0407/docker-fundamentals:${{ github.sha }} .
+
+            - name: Renombrar la imagen con commit
+              run: docker tag xitony0407/docker-fundamentals:${{ github.sha }} xitony0407/docker-fundamentals:latest
 
             - name: Publicar la imagen
-              run: docker push xitony0407/docker-fundamentals:v2
+              run: |
+                docker push xitony0407/docker-fundamentals:${{ github.sha }}
+                docker push xitony0407/docker-fundamentals:latest
